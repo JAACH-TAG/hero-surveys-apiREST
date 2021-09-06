@@ -26,10 +26,16 @@ def create_app(test_config=config.ProductionConfig):
         
     db.app = app
     db.init_app(app)
+
+    with app.app_context():
+        db.create_all()
+
     JWTManager(app)
     app.register_blueprint(auth)
     app.register_blueprint(surveys)
 
+    bcrypt.init_app(app)
+    
     @app.get("/<url>")
     def to_url(url):
         survey = Survey.query.filter_by(url=url).first_or_404()
@@ -46,7 +52,6 @@ def create_app(test_config=config.ProductionConfig):
     def handle_500(e):
         return jsonify({"error": "Something went wrong"}), HTTP_500_INTERNAL_SERVER_ERROR
 
-    bcrypt.init_app(app)
     return app
 
 
