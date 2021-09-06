@@ -1,0 +1,9 @@
+{% extends "layout.html" %} {% block content %}
+<!-- DIVIDER -->
+{% for post in posts %}
+<h1>{{post.name}}</h1>
+<p>{{post.title}}</p>
+{% endfor %}
+<input placeholder="hola mundo" />
+<!-- DIVIDER -->
+{% endblock content %}
