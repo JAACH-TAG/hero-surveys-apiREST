@@ -34,7 +34,7 @@ def register():
     if User.query.filter_by(username=username).first() is not None:
         return jsonify({"error": "User is taken"}), HTTP_409_CONFLICT
 
-    pwd_hash = bcrypt.generate_password_hash(password)
+    pwd_hash = bcrypt.generate_password_hash(password).decode("utf-8")
 
     user= User(username=username, email=email, password=pwd_hash)
     db.session.add(user)
@@ -53,10 +53,13 @@ def login():
     password = request.json.get('password', None)
 
     user = User.query.filter_by(email=email).first()
-    if user:
-        # is_pass_correct = bcrypt.check_password_hash(user.password, password)
 
-        if bcrypt.check_password_hash(user.password, password):
+    print(user.password)
+    print(password)
+    if user:
+        is_pass_correct = bcrypt.check_password_hash(user.password, password)
+
+        if is_pass_correct:
             refresh = create_refresh_token(identity=user.id)
             access = create_access_token(identity=user.id)
 
