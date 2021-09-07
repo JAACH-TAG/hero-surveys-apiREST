@@ -13,6 +13,7 @@ def create_app(test_config=config.ProductionConfig):
     if test_config is None:
         app.config.from_mapping(
             SECRET_KEY = os.environ.get("SECRET_KEY"),
+            BCRYPT_LOG_ROUNDS = 4,
             SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI"),
             SQLALCHEMY_TRACK_MODIFICATIONS = False,
             JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY")

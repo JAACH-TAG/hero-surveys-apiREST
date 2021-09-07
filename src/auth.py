@@ -54,8 +54,6 @@ def login():
 
     user = User.query.filter_by(email=email).first()
 
-    print(user.password)
-    print(password)
     if user:
         is_pass_correct = bcrypt.check_password_hash(user.password, password)
 
