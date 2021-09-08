@@ -28,3 +28,4 @@ class ProductionConfig(BaseConfig):
     SECRET_KEY = environ.get("SECRET_KEY")
     JWT_SECRET_KEY = environ.get("JWT_SECRET_KEY")
     DATABASE_URL = environ.get("DATABASE_URL")
+    

@@ -1,0 +1,36 @@
+User sign up
+---
+tags:
+  - Authentification
+parameters:
+  - name: body
+    description: The body should contain the user sign up credentials
+    in: body
+    required: true
+    schema:
+      type: object
+      required:
+        - "username"
+        - "email"
+        - "password"
+      properties:
+        username:
+          type: "string"
+          example: "John Snow"
+        email:
+          type: "email"
+          example: "user@example.com"
+        password:
+          type: "string"
+          format: "password"
+          example: "******"
+
+responses:
+  200:
+    description: When a user succesfully sign up
+
+  400:
+    description: Fails to sign up due to bad request data
+
+  401:
+    description: A user supplies incorrect credentials

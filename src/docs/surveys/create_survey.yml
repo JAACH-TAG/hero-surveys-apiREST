@@ -1,0 +1,35 @@
+GET all surveys or POST survey created
+---
+tags:
+  - Survey
+parameters:
+  - name: body
+    description: "Fill your survey information here"
+    in: body
+    required: true
+    schema:
+      type: object
+      required:
+        - "title"
+        - "image"
+        - "url"
+      properties:
+        title:
+          type: "string"
+          example: "Survey 1"
+        image:
+          type: "file|url string"
+          example: "image.png|jpg"
+        url:
+          type: "url"
+          example: "/random_url"
+
+responses:
+  200:
+    description: When a user succesfully create one survey
+
+  400:
+    description: Fails to create a survey due to bad request data
+
+  401:
+    description: A user supplies incorrect credentials

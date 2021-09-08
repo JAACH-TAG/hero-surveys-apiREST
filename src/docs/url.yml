@@ -1,0 +1,13 @@
+Store stats about url visited
+---
+tags:
+  - Root
+parameters:
+  - in: path
+    name: url
+    required: true
+responses:
+  302:
+    description: Redirects permanently
+  304:
+    description: Item not found

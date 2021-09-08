@@ -1,6 +1,7 @@
 from datetime import datetime
 from flask_bcrypt import Bcrypt
-from flask_sqlalchemy import SQLAlchemy, event
+from sqlalchemy import event, DDL
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import backref
 
 db = SQLAlchemy()
@@ -87,6 +88,14 @@ class User(db.Model):
 # def date_insert(mapper, connection, target):
 #     target.date_updated = datetime.utcnow()
 
+
+class Feedback(db.Model):
+    __tablename__ = "feedback"
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    comment = db.Column(db.String(500), nullable=False)
+
 class Survey(db.Model):
     __tablename__ = "survey"
     id = db.Column(db.Integer, primary_key=True)
@@ -111,13 +120,17 @@ class QuestionType(db.Model):
     __tablename__ = "question_type"
     id = db.Column(db.Integer, primary_key=True)
     type_text = db.Column(db.String(50),unique=True,nullable=False)
-    
-@event.listens_for(QuestionType.__table__, 'after_create')
-def create_question_types(*args, **kwargs):
-    db.session.add(QuestionType(type_text='Abierta'))
-    db.session.add(QuestionType(type_text='Cerrada'))
-    db.session.add(QuestionType(type_text='Multiple'))
-    db.session.commit()
+
+
+# @event.listens_for(QuestionType.__table__, 'after_create')
+# def create_question_types(*args, **kwargs):
+#     db.session.add(QuestionType(type_text='Abierta'))
+#     db.session.add(QuestionType(type_text='Cerrada'))
+#     db.session.add(QuestionType(type_text='Multiple'))
+#     db.session.commit()
+event.listen(QuestionType.__table__, 'after_create',
+            DDL(""" INSERT INTO question_type (id, type_text) VALUES (1, 'Abierta'), (2, 'Cerrada'), (3, 'Multiple') """))
+
 
 
 class Question(db.Model):

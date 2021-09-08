@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended.utils import get_jwt_identity
 from flask_jwt_extended import jwt_required
+from flasgger import swag_from
 from src.models import db, Survey
 from src.constants.http_status_codes import HTTP_201_CREATED, HTTP_400_BAD_REQUEST, HTTP_409_CONFLICT, HTTP_401_UNAUTHORIZED, HTTP_200_OK, HTTP_404_NOT_FOUND, HTTP_204_NO_CONTENT
 
@@ -8,6 +9,7 @@ surveys  = Blueprint("surveys", __name__, url_prefix="/api/v1/surveys")
 
 # CREAR UNA ENCUESTA U OBTENER TODAS
 @surveys.route("/" , methods=["GET", "POST"])
+@swag_from("./docs/surveys/create_survey.yml")
 @jwt_required()
 def all_surveys():
 
