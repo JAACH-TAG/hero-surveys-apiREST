@@ -1,0 +1,17 @@
+Protected content method (Authentification is required)
+GET all surveys
+---
+tags:
+  - Surveys
+responses:
+  200:
+    description: Show a list of surveys
+    examples:
+      [
+        { "title": "survey_1", "image": "survey_1_image.png", "url": "/survey_1_url" },
+        { "title": "survey_2", "image": "survey_2_image.png", "url": "/survey_2_url" },
+      ]
+  204:
+    description: The list of surveys is empty.
+  400:
+    description: A user gives wrong credentials.

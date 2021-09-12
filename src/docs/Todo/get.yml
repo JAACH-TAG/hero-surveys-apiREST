@@ -1,0 +1,8 @@
+TODO
+---
+tags:
+  - Todo
+summary: Logs user into the system
+responses:
+  "200":
+    description: successful operation

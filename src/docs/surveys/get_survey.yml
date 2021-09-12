@@ -1,0 +1,12 @@
+Protected content method (Authentification is required)
+Get survey with the specific id.
+---
+tags:
+  - Surveys
+responses:
+  200:
+    description: OK.
+  400:
+    description: Item not found.
+  500:
+    description: Something went wrong.

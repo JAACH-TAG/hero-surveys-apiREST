@@ -1,4 +1,4 @@
-User log in
+User log in to create a JWT_TOKEN.
 ---
 tags:
   - Authentification
@@ -10,8 +10,8 @@ parameters:
     schema:
       type: object
       required:
-        - "email"
-        - "password"
+        - email
+        - password
       properties:
         email:
           type: "email"
@@ -19,14 +19,15 @@ parameters:
         password:
           type: "string"
           format: "password"
+          description: Password must have more than 6 chars or equals.
           example: "******"
 
 responses:
   200:
-    description: When a user succesfully logs in
+    description: OK.
 
   400:
-    description: Fails to login due to bad request data
+    description: Fails to login due to bad request data.
 
   401:
-    description: A user supplies incorrect credentials
+    description: A user input wrong credentials.

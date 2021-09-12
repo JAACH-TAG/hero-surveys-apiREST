@@ -1,4 +1,4 @@
-User sign up
+User Sign Up. Username, Email and Password are required.
 ---
 tags:
   - Authentification
@@ -10,27 +10,27 @@ parameters:
     schema:
       type: object
       required:
-        - "username"
-        - "email"
-        - "password"
+        - username
+        - email
+        - password
       properties:
         username:
-          type: "string"
-          example: "John Snow"
+          type: string
+          example: John Snow
         email:
-          type: "email"
-          example: "user@example.com"
+          type: email
+          example: user@example.com
         password:
-          type: "string"
-          format: "password"
+          type: string
+          format: password
           example: "******"
 
 responses:
   200:
-    description: When a user succesfully sign up
+    description: OK.
 
   400:
-    description: Fails to sign up due to bad request data
+    description: Fails to sign up due to bad request data.
 
   401:
-    description: A user supplies incorrect credentials
+    description: A user input wrong credentials.

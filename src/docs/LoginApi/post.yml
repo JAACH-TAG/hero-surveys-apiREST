@@ -1,0 +1,27 @@
+tags:
+  - Authentification
+summary: User log in to create a JWT_TOKEN.
+responses:
+  200:
+    description: OK.
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/user_log_in"
+
+  400:
+    description: Fails to login due to bad request data.
+
+  401:
+    description: Invalid useremail/password supplied
+    content:
+      application/json:
+        schema:
+          $ref: "#/components/schemas/api_fail_response"
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: "#/components/schemas/login_user"
+  description: Login user object
+  required: true

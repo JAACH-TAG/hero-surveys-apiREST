@@ -1,0 +1,12 @@
+Display the current user information. Authentification and Fresh Token is required when it is already expired.
+---
+tags:
+  - Authentification
+
+responses:
+  200:
+    description: OK.
+  404:
+    description: User not found.
+  500:
+    description: Something went wrong.

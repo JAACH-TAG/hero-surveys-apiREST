@@ -1,5 +1,5 @@
 Protected content method (Authentification is required)
-This endpoints allows create a survey.
+This endpoints allows update a survey.
 ---
 tags:
   - Surveys
@@ -21,7 +21,7 @@ parameters:
           type: string
           example: "Survey_Example.png"
         url:
-          type: string
+          type: url
           example: "http://localhost:5000/SurveyExample123"
 responses:
   200:

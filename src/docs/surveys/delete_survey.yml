@@ -1,0 +1,15 @@
+Protected content method (Authentification is required)
+Delete the survey choosed.
+---
+tags:
+  - Surveys
+
+respones:
+  200:
+    description: OK.
+  403:
+    description: This operation is not allowed.
+  404:
+    description: Survey is already closed.
+  500:
+    description: Something went wrong.

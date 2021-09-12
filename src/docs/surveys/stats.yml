@@ -1,0 +1,13 @@
+Show a stats information about the surveys.
+---
+tags:
+  - Surveys
+responses:
+  200:
+    description: OK.
+  302:
+    description: Found.
+  304:
+    description: Item not found.
+  404:
+    description: Page not found.

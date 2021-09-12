@@ -1,0 +1,14 @@
+Logout to close the actual session and delete the cookies.
+---
+tags:
+  - Authentification
+
+respones:
+  200:
+    description: OK.
+  403:
+    description: This operation is not allowed.
+  404:
+    description: Session is already closed.
+  500:
+    description: Something went wrong.
